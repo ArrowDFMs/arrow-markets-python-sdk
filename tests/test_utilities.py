@@ -2,50 +2,42 @@ import pytest
 import sys
 import os.path
 # appending the parent directory path
-sys.path.append(os.path.dirname(__file__)+'/../')
+sys.path.append(os.path.dirname(__file__)+'/../src/')
 from utilities import *
 
 def test_router_contract():
     v4Router = getRouterContract("v4")
-    v3Router = getRouterContract("v3")
     contestRouter = getRouterContract("competition")
 
-    assert v4Router.address == '0xa6EA0E47501627a964e11E31D2BD7D40452dff6F'
-    assert v3Router.address == '0x31122CeF9891Ef661C99352266FA0FF0079a0e06'
-    assert contestRouter.address == '0x33D1a0529D0C23f183fF1de346BDcA029dB0046E'
+    assert v4Router.address == '0xc4dADDc8b63B74939E8906c8EEb11572948307B4'
+    assert contestRouter.address == '0x9857F37d83f6f2D777E37613C2466d9e7F8A3ad9'
 
 def test_stablecoin_contract():
     v4Stablecoin = getStablecoinContract("v4")
-    v3Stablecoin = getStablecoinContract("v3")
     contestStablecoin = getStablecoinContract("competition")
 
     assert v4Stablecoin.address == '0x45ea5d57BA80B5e3b0Ed502e9a08d568c96278F9'
-    assert v3Stablecoin.address == '0x45ea5d57BA80B5e3b0Ed502e9a08d568c96278F9'
-    assert contestStablecoin.address == '0x6b8dA544EB543d7f3B533d79267b778e7427B288'
+    assert contestStablecoin.address == '0x1912AD1949fd370B9B6C362f1c005A16bf9Ae59c'
 
 def test_events_contract():
     v4Events = getEventsContract("v4")
-    v3Events = getEventsContract("v3")
     contestEvents = getEventsContract("competition")
 
-    assert v4Events.address == '0xAF0bbA63B8B14e57B817CA6410978d75BBb65854'
-    assert v3Events.address == '0x932BC618C972Ef2703cD66A751747d71e7A1BB3D'
-    assert contestEvents.address == '0x4dc28938e5112c5729E582F80363f26982Afcc50'
+    assert v4Events.address == '0xd1283BfdbD7Ed06E11B9c7922E4Eb286f6b98EfE'
+    assert contestEvents.address == '0xed8f176a4E9f956B20125C9E8f9fA7639Fb9F27F'
 
 def test_registry_contract():
     v4Registry = getRegistryContract("v4")
-    v3Registry = getRegistryContract("v3")
     contestRegistry = getRegistryContract("competition")
 
-    assert v4Registry.address == '0x20cee0F261F36A0CBcC3D38511D96C3AE0769706'
-    assert v3Registry.address == '0xe72175c1b3A9A287302276491bfb9ad275842876'
-    assert contestRegistry.address == '0x342F0b981a90c9fD70483Bb85CfB897b1A6091Dc'
+    assert v4Registry.address == '0x6c5764fcbcA221693a963dD7dFBe62207e6D6268'
+    assert contestRegistry.address == '0x880eBd1F783890a983c0Ca3B58a3627a02A22a96'
 
 def test_compute_option_chain():
     optionChainAddress = computeOptionChainAddress("BTC", 10072022)
         
     assert isinstance(optionChainAddress, str)
-    assert optionChainAddress == '0x5c8134cD585431032ae752fbfc8f1508711D8285'
+    assert optionChainAddress == '0x023B5Caf9C0D9eFAAe6CFAEaD88126670a0aee9B'
 
 def test_current_utc_time():
     currentTimeUTC = getCurrentTimeUTC()
@@ -90,7 +82,7 @@ def test_is_friday():
     assert friday == True
 
 def test_valid_version():
-    valid = isValidVersion("v3")
+    valid = isValidVersion("v4")
     invalid = isValidVersion("INVALID")
         
     assert invalid == False

@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arrow-markets-python-sdk"
+version = "1.0.0"
+description = "Arrow Markets SDK"
+readme = "README.md"
+dependencies = [
+    "requests",
+    "web3"
+]
+requires-python = ">=3.7"

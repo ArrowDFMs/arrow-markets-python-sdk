@@ -2,7 +2,7 @@ import pytest
 import sys
 import os.path
 # appending the parent directory path
-sys.path.append(os.path.dirname(__file__)+'/../')
+sys.path.append(os.path.dirname(__file__)+'/../src/')
 from utilities import *
 from arrow_sdk import *
 

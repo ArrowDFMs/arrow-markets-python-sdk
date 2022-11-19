@@ -237,8 +237,8 @@ def computeOptionChainAddress(ticker, readableExpiration, version=DEFAULT_VERSIO
     # Get chain factory contract address from router
     router = getRouterContract(version)
 
-    if version == "v4" or version == "v3" or version == "competition":
-            optionChainFactoryAddress = router.functions.getOptionChainFactoryAddress().call()
+    if version == "v4" or version == "competition":
+        optionChainFactoryAddress = router.functions.getOptionChainFactoryAddress().call()
     else:
         raise UNSUPPORTED_VERSION_ERROR
 
@@ -277,9 +277,7 @@ def prepareDeliverOptionParams(optionOrderParams: OptionOrderParams, version = D
     bigNumberStrike = [round(strike) for strike in bigNumberStrike]
     formattedStrike = "|".join(strikes)
 
-    if version == "v3":
-        intQuantity = round(optionOrderParams["quantity"])
-    elif version == "v4" or version == "competition":
+    if version == "v4" or version == "competition":
         intQuantity = round(optionOrderParams["quantity"] * quantityScaleFactor)
     else: 
         raise UNSUPPORTED_VERSION_ERROR
